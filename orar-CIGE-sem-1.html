@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orar CIGE gr. 1</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f3f1ec;--card:#fff;--ink:#1d2433;--mute:#667085;--line:#e1ddd3;--chip:#ece8dd;
+--c0:#3f8f5a;--c1:#3b6fb0;--c2:#c98a1b;--c3:#7a7f8c;--c4:#b8473f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2e;--ink:#eceff6;--mute:#98a2b8;--line:#263049;--chip:#222c44;
+--c0:#5fbf80;--c1:#6a9fe0;--c2:#e8b04a;--c3:#a0a6b4;--c4:#e2766d}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#171e2e;--ink:#eceff6;--mute:#98a2b8;--line:#263049;--chip:#222c44;
+--c0:#5fbf80;--c1:#6a9fe0;--c2:#e8b04a;--c3:#a0a6b4;--c4:#e2766d}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 "Segoe UI",system-ui,sans-serif}
+main{max-width:560px;margin:0 auto;padding:18px 14px 40px}
+h1{font:600 22px/1.2 Georgia,"Times New Roman",serif;margin:0 0 2px}
+.sub{color:var(--mute);font-size:14px;margin:0 0 14px}
+.seg{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 13px;font-size:14px}
+button[aria-pressed="true"],button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button:focus-visible{outline:3px solid var(--accent,var(--c1));outline-offset:2px}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:16px}
+.days button{border-radius:12px;padding:9px 0;text-align:center}
+h2{font:600 20px Georgia,serif;margin:0 0 10px;display:flex;align-items:baseline;gap:10px}
+h2 small{font:14px "Segoe UI",system-ui,sans-serif;color:var(--mute)}
+.list{display:grid;gap:10px}
+.cls{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:10px;padding:12px 14px}
+.t{font-weight:600;font-size:15px}
+.n{font-size:17px;margin:3px 0 6px;font-weight:600}
+.m{display:flex;flex-wrap:wrap;gap:6px;align-items:center;color:var(--mute);font-size:14px}
+.chip{background:var(--chip);color:var(--ink);border-radius:6px;padding:2px 8px;font-size:13px}
+.course{background:var(--accent);color:#fff}
+.free{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:34px 16px;text-align:center;color:var(--mute)}
+.free b{display:block;color:var(--ink);font:600 20px Georgia,serif;margin-bottom:4px}
+.blk{border-left:2px solid var(--accent);margin:0 0 18px 6px;padding-left:12px;display:grid;gap:10px}
+.trip{display:flex;justify-content:space-between;gap:8px;border:1.5px dashed var(--line);border-radius:10px;padding:9px 12px;color:var(--mute);font-size:14px}
+.trip b{color:var(--ink);font-weight:600}
+.away{background:var(--chip);border-radius:10px;padding:9px 12px;font-size:14px;margin-bottom:12px}
+.gap{color:var(--mute);font-size:13px;margin:0 0 10px 6px}
+.key{margin-top:20px;font-size:13px;color:var(--mute)}
+</style>
+</head>
+<body>
+<main>
+<h1>Orar personalizat – CIGE gr. 1</h1>
+<p class="sub">Limba străină: germană</p>
+
+<div class="seg" role="group" aria-label="Săptămâna">
+<button data-w="all" aria-pressed="true">Toate</button>
+<button data-w="SP" aria-pressed="false">Pară (SP)</button>
+<button data-w="SI" aria-pressed="false">Impară (SI)</button>
+</div>
+
+<div class="days" role="tablist" id="tabs"></div>
+<section id="day" aria-live="polite"></section>
+
+<p class="key"><span class="chip course" style="--accent:var(--c1)">Curs</span> = lecture &nbsp; <span class="chip">Seminar</span> = seminar. SP/SI = even/odd weeks (Híres/Páratlan hét). Unmarked classes run every week. Dashed boxes are your 1-hour trips; classes with breaks under 90 min count as one block.</p>
+</main>
+<script>
+var D=[
+{n:"Luni",c:"--c0",k:[
+["13:45","15:15","022","Public Finance","Mara E.","c",""],
+["15:30","17:00","121","Service Design and Development","Souca M.","c","SI"],
+["15:30","17:00","121","Service Design and Development","Souca M.","s","SP"],
+["17:15","18:45","218","History and Economic Doctrines","Chiper R.","s","SP"]]},
+{n:"Marți",c:"--c1",k:[
+["08:30","10:00","121","Microeconomics","Bucur L.","s",""],
+["10:15","11:45","009","Mathematics Applied to Economics","Curt P.","c",""],
+["15:30","17:00","022","History and Economic Doctrines","Jula O.","c",""]]},
+{n:"Miercuri",c:"--c2",k:[
+["08:30","10:00","022","Management","Lungescu D.","c",""],
+["10:15","11:45","022","Microeconomics","Jula O.","c",""],
+["12:00","13:30","218","Modern Languages Applied to Business 1 (German)","Parasca M.","s",""]]},
+{n:"Joi",c:"--c3",k:[]},
+{n:"Vineri",c:"--c4",k:[
+["10:15","11:45","533","Public Finance","Lucut - Capras I.","s","SP"],
+["12:00","13:30","218","Mathematics Applied to Economics","Chiru I.","s",""],
+["13:45","15:15","121","Management","Nedelcuț A.","s",""]]}];
+var wk="all",cur=0,tabs=document.getElementById("tabs"),out=document.getElementById("day");
+var g=new Date().getDay();cur=(g>=1&&g<=5)?g-1:0;
+D.forEach(function(d,i){var b=document.createElement("button");b.textContent=d.n.slice(0,3);b.setAttribute("role","tab");b.setAttribute("aria-label",d.n);b.onclick=function(){cur=i;draw()};tabs.appendChild(b)});
+document.querySelectorAll("[data-w]").forEach(function(b){b.onclick=function(){wk=b.dataset.w;document.querySelectorAll("[data-w]").forEach(function(x){x.setAttribute("aria-pressed",x===b)});draw()}});
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+var TRAVEL=60,GAP=90;
+function m(t){var p=t.split(":");return +p[0]*60+ +p[1]}
+function f(x){x=(x+1440)%1440;return String(Math.floor(x/60)).padStart(2,"0")+":"+String(x%60).padStart(2,"0")}
+function card(r,d){return '<article class="cls" style="--accent:var('+d.c+')"><div class="t">'+r[0]+' – '+r[1]+'</div><div class="n">'+esc(r[3])+'</div><div class="m"><span class="chip '+(r[5]=="c"?"course":"")+'">'+(r[5]=="c"?"Curs":"Seminar")+'</span><span>Sala '+r[2]+'</span><span>'+esc(r[4])+'</span>'+(r[6]?'<span class="chip">'+r[6]+'</span>':'')+'</div></article>'}
+function render(rows,d){
+ var s=rows.slice().sort(function(a,b){return m(a[0])-m(b[0])}),bl=[];
+ s.forEach(function(r){var l=bl[bl.length-1];if(l&&m(r[0])-l.end<=GAP){l.r.push(r);l.end=Math.max(l.end,m(r[1]))}else bl.push({st:m(r[0]),end:m(r[1]),r:[r]})});
+ var h='<div class="away">Away from home <b>'+f(bl[0].st-TRAVEL)+' – '+f(bl[bl.length-1].end+TRAVEL)+'</b>'+(bl.length>1?' (home in between)':'')+'</div>';
+ bl.forEach(function(b,i){
+  if(i){var g=b.st-TRAVEL-(bl[i-1].end+TRAVEL);h+='<p class="gap">'+(g>=0?'Home for '+Math.floor(g/60)+'h '+(g%60)+'m':'No time to go home')+'</p>'}
+  h+='<div class="blk" style="--accent:var('+d.c+')"><div class="trip"><span>Travel to uni</span><b>'+f(b.st-TRAVEL)+' – '+f(b.st)+'</b></div>'+b.r.map(function(r){return card(r,d)}).join("")+'<div class="trip"><span>Travel home</span><b>'+f(b.end)+' – '+f(b.end+TRAVEL)+'</b></div></div>'});
+ return h}
+function draw(){
+ [].forEach.call(tabs.children,function(b,i){b.setAttribute("aria-selected",i===cur)});
+ var d=D[cur],rows=d.k.filter(function(r){return wk==="all"||!r[6]||r[6]===wk});
+ var h='<h2>'+d.n+' <small>'+rows.length+(rows.length==1?' clasă':' clase')+'</small></h2>';
+ if(!d.k.length){h+='<div class="free"><b>Zi liberă</b>Szabadnap · Free day</div>'}
+ else if(!rows.length){h+='<div class="free"><b>Nimic în această săptămână</b>Switch to “Toate” to see all classes.</div>'}
+ else{h+=render(rows,d)}
+ out.innerHTML=h;
+ document.documentElement.style.setProperty("--accent","var("+d.c+")");
+}
+draw();
+</script>
+</body>
+</html>
